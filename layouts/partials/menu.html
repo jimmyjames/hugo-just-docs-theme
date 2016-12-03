@@ -1,0 +1,65 @@
+<!-- Side nav -->
+<aside>
+  <div id="sidebar" class="nav-collapse">
+
+    <ul class="sidebar-nav sidebar-menu">
+      <li>
+        <a href="#" id="close-button">
+          <i class="fa fa-close fa-lg"></i>
+        </a>
+      </li>
+      {{ $currentNode := . }}
+      {{ range .Site.Menus.main }}
+        {{ if .HasChildren }}
+          <li class="sub-menu{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}">
+            <a href="javascript:;">
+              {{ .Pre }}
+              <span>{{ .Name }}</span>
+              <span class="menu-arrow fa {{if $currentNode.HasMenuCurrent "main" . }}fa-angle-down{{else}}fa-angle-right{{end}}"></span>
+
+            </a>
+            <ul class="sub{{if $currentNode.HasMenuCurrent "main" . }} open{{end}}">
+              {{ range .Children }}
+                <li {{if $currentNode.IsMenuCurrent "main" . }} class="active"{{end}}>
+                  <a href="{{.URL}}">{{ .Name }}</a>
+                </li>
+              {{ end }}
+            </ul>
+          </li>
+          {{ else }}
+            <li class="{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}">
+              <a class="" href="{{.URL}}">
+                  {{ .Pre }}
+                  <span>{{ .Name }}</span>
+              </a>
+            </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+</aside>
+            <!-- <li>
+                <a href="#">
+                    <span>Item 1</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>Item 2</span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#">
+                            <span>Sub Item 1</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>Sub Item 2</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> -->
+        <!-- </ul>
+    </div>
+</aside> -->

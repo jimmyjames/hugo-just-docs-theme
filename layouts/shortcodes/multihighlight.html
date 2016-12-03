@@ -1,0 +1,22 @@
+<div class="multi-highlight">
+    <div id="tab-1" class="container">
+      <ul class="nav nav-pills">
+        <li class="active">
+          <a href="#1a" data-toggle="tab">{{ .Get 0 }}</a>
+        </li>
+        <li>
+          <a href="#2a" data-toggle="tab">{{ .Get 1 }}</a>
+        </li>
+      </ul>
+
+      <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1a">
+        </div>
+        <div class="tab-pane" id="2a">
+        </div>
+      </div>
+    </div>
+    <div id="multi-code" style="display:none;">
+      {{ .Inner }}
+    </div>
+</div>

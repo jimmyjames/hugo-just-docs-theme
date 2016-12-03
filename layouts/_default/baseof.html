@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+<body>
+  <section id="container">
+    {{ partial "menu.html" . }}
+    {{ partial "title-bar.html" . }}
+    <!-- main content -->
+    <section id="main-content">
+
+          <div class="article-tagline">
+            <h1> {{ .Title }} </h1>
+            {{ if isset .Params "tagline" }}
+            <p>{{ .Params.tagline | safeHTML }}</p>
+            {{ end }}
+          </div>
+          <div class="article-body">
+            <div class="row">
+              {{ if not .Params.notoc }}
+                <div class="col-lg-9 col-sm-12">
+              {{ else }}
+                <div class="col-sm-12">
+              {{ end }}
+              {{ block "main" . }}{{ end }}
+              {{ partial "footer.html" . }}
