@@ -22,6 +22,10 @@ body {
   font-size: 36px;
 }
 
+.main-col {
+  padding-right: 5px;
+}
+
 .nav-menu {
   font-size: 25px !important;
 }
@@ -77,6 +81,9 @@ ul.sidebar-nav {
 
 .toc-label {
     text-transform: uppercase;
+    font-size: smaller;
+    font-weight: 500;
+    color: #808080;
 }
 
 /* toc highlight for active menu */
@@ -132,13 +139,13 @@ ul.sidebar-menu li ul.sub li a {
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
-    font-weight: 400;
+    font-weight: 300;
     color: #f2f2f2;
-    -webkit-transition: all 0.1s ease;
+    /*-webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     -ms-transition: all 0.1s ease;
-    transition: all 0.1s ease;
+    transition: all 0.1s ease;*/
     display: block;
 }
 
@@ -206,6 +213,20 @@ ul.sidebar-menu li a i {
     margin-right: 8px;
 }
 
+/* anchors */
+.anchor {
+  color: #00bdf3;
+  font-size: 0.5em;
+  cursor:pointer;
+  visibility:hidden;
+  vertical-align: middle;
+}
+
+h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
+  visibility:visible;
+}
+/* end anchors */
+
 /* tagline */
 .article-tagline {
   width: 100%;
@@ -240,6 +261,7 @@ ul.sidebar-menu li a i {
 pre {
   /* bootstrap adds its own code styles */
   padding: 0px;
+  position: relative;
 }
 
 /** callout **/
@@ -305,19 +327,13 @@ pre {
 }
 
 #TableOfContents li.active {
-  font-weight: 600;
-  /*-webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-left: 2px solid lightblue;*/
+  font-weight: 500;
 }
 
 #TableOfContents > ul > li > ul > li > a {
 	display: inline-block;
 	position: relative;
-	padding-bottom: 3px;
+	padding-bottom: 1px;
 }
 #TableOfContents > ul > li > ul > li > a:after {
 	content: '';
@@ -327,7 +343,7 @@ pre {
 	width: 0px;
 	background: transparent;
 	/*transition: width .3s ease, background-color .5s ease;*/
-  transition: all 250ms ease 0s;
+  transition: all 300ms ease 0s;
 }
 #TableOfContents > ul > li > ul > li > a:hover:after,
 #TableOfContents > ul > li > ul > li.active > a:after {
@@ -337,11 +353,12 @@ pre {
 
 #TableOfContents a {
   text-decoration: none;
+  color: #1a2027;
   display: block;
 }
 
 #toc-nav {
-  margin-left: -30px; /* todo why? */
+  margin-left: -42px; /* todo why? */
 }
 /* end table of contents */
 
@@ -390,12 +407,168 @@ pre {
   background: #21527d none repeat scroll 0% 0%;
   color: #fff;
 }
-.tab-pane {
-  padding: 15px 0;
+.nav-tabs > li > a {
+  padding: 5px 10px;
 }
-/*.tab-content{padding:20px}*/
-
+.tab-pane {
+  padding: 3px 0;
+}
+.code-tabs {
+  border: 1px solid lightgray;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
 /* end tabbed code blocks */
+
+pre .copy-to-clipboard {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #4d5257;
+    /*background-color: #ffffff;
+    color: black;*/
+    color: #ccc;
+    border-radius: 2px;
+    width: 80px;
+    height: 30px;
+    /* vertical-align: middle; */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* align-content: center; */
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 6px;
+    font-size: 14px;
+    opacity: 0.25
+}
+
+.copy-active, pre .copy-to-clipboard:hover  {
+  /* todo this isn't right... */
+  opacity: 1 !important;
+}
+
+.copy-to-clipboard:hover {
+  cursor: pointer;
+}
+/*code + .copy-to-clipboard {
+    margin-left: -1px;
+    border-left: 0 !important;
+    font-size: inherit !important;
+    vertical-align: middle;
+    height: 21px;
+    top: 0;
+    margin-left: -1px;
+}*/
+
+/* tooltips */
+.tooltipped {
+    position: relative;
+}
+.tooltipped:after {
+    position: absolute;
+    z-index: 1000000;
+    display: none;
+    padding: 5px 8px;
+    font: normal normal 11px/1.5 "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: break-word;
+    white-space: pre;
+    pointer-events: none;
+    content: attr(aria-label);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+.tooltipped:before {
+    position: absolute;
+    z-index: 1000001;
+    display: none;
+    width: 0;
+    height: 0;
+    color: rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    content: "";
+    border: 5px solid transparent;
+}
+.tooltipped:hover:before, .tooltipped:hover:after, .tooltipped:active:before, .tooltipped:active:after, .tooltipped:focus:before, .tooltipped:focus:after {
+    display: inline-block;
+    text-decoration: none;
+}
+.tooltipped-s:after, .tooltipped-se:after, .tooltipped-sw:after {
+    top: 100%;
+    right: 50%;
+    margin-top: 5px;
+}
+.tooltipped-s:before, .tooltipped-se:before, .tooltipped-sw:before {
+    top: auto;
+    right: 50%;
+    bottom: -5px;
+    margin-right: -5px;
+    border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+.tooltipped-se:after {
+    right: auto;
+    left: 50%;
+    margin-left: -15px;
+}
+.tooltipped-sw:after {
+    margin-right: -15px;
+}
+.tooltipped-n:after, .tooltipped-ne:after, .tooltipped-nw:after {
+    right: 50%;
+    bottom: 100%;
+    margin-bottom: 5px;
+}
+.tooltipped-n:before, .tooltipped-ne:before, .tooltipped-nw:before {
+    top: -5px;
+    right: 50%;
+    bottom: auto;
+    margin-right: -5px;
+    border-top-color: rgba(0, 0, 0, 0.8);
+}
+.tooltipped-ne:after {
+    right: auto;
+    left: 50%;
+    margin-left: -15px;
+}
+.tooltipped-nw:after {
+    margin-right: -15px;
+}
+.tooltipped-s:after, .tooltipped-n:after {
+    transform: translateX(50%);
+}
+.tooltipped-w:after {
+    right: 100%;
+    bottom: 50%;
+    margin-right: 5px;
+    transform: translateY(50%);
+}
+.tooltipped-w:before {
+    top: 50%;
+    bottom: 50%;
+    left: -5px;
+    margin-top: -5px;
+    border-left-color: rgba(0, 0, 0, 0.8);
+}
+.tooltipped-e:after {
+    bottom: 50%;
+    left: 100%;
+    margin-left: 5px;
+    transform: translateY(50%);
+}
+.tooltipped-e:before {
+    top: 50%;
+    right: -5px;
+    bottom: 50%;
+    margin-top: -5px;
+    border-right-color: rgba(0, 0, 0, 0.8);
+}
+/* end tooltips */
 
 /*Responsive styles*/
 @media (max-width: 768px) {

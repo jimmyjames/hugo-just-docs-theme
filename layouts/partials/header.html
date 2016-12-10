@@ -8,10 +8,18 @@
     <title>{{ .Site.Params.title }}</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/vendor/font-awesome.min.css" rel="stylesheet">
     <!-- TODO - download fonts locally -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,300,400,500,700|Montserrat|Work+Sans:100,400" rel="stylesheet">
-    <link href="/css/monokai-sublime.css" rel="stylesheet">
+
+    {{ if eq "monokai" .Site.Params.codeTheme }}
+      <link href="/css/vendor/monokai-sublime.css" rel="stylesheet">
+    {{ else if eq "github" .Site.Params.codeTheme }}
+      <link href="/css/vendor/github.css" rel="stylesheet">
+    {{ else }}
+      <!-- <link href="/css/vendor/monokai-sublime.css" rel="stylesheet"> -->
+    {{ end }}
+
     <link href="/css/theme.css" rel="stylesheet">
     </head>
