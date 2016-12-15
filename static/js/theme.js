@@ -1,3 +1,6 @@
+/*
+Namespace for docs site 
+*/
 var DocsTheme = {
 
   init: function() {
