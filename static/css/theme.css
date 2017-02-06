@@ -11,6 +11,10 @@ body {
   }
 }
 
+#nav-footer {
+    padding-top: 40px;
+}
+
 .header {
     border-bottom: 1px solid darkgray;
     right: 0;
