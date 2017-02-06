@@ -319,6 +319,10 @@ pre {
   font-weight: 500;
 }
 
+#TableOfContents > ul > li > ul > li > ul {
+    display: none;
+}
+
 #TableOfContents > ul > li > ul > li > a {
 	display: inline-block;
 	position: relative;
