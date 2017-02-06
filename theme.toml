@@ -5,11 +5,11 @@ name = "JustDocs"
 license = "MIT"
 licenselink = "https://github.com/jimmyjames/hugo-just-docs-theme/blob/master/LICENSE.md"
 description = ""
-homepage = "http://siteforthistheme.com/"
+homepage = "https://jimmyjames.github.io/justdocs/"
 tags = ["documentation", "hugo"]
 features = ["", ""]
 min_version = 0.17
 
 [author]
   name = "James Anderson"
-  homepage = ""
+  homepage = "https://jimmyjames.github.io/justdocs/"
