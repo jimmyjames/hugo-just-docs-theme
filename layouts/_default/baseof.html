@@ -1,23 +1,47 @@
-{{ partial "header.html" . }}
-<body>
-  <section id="container">
-    {{ partial "menu.html" . }}
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "header.html" . }}
+  <body>
     {{ partial "title-bar.html" . }}
-    <!-- main content -->
-    <section id="main-content">
+    <section class="container">
 
-          <div class="article-tagline">
-            <h1> {{ .Title }} </h1>
-            {{ if isset .Params "tagline" }}
-            <p>{{ .Params.tagline | safeHTML }}</p>
-            {{ end }}
-          </div>
-          <div class="article-body">
-            <div class="row">
-              {{ if not .Params.notoc }}
-                <div class="main-col col-md-10 col-sm-12">
-              {{ else }}
-                <div class="col-sm-12">
+      {{ partial "menu.html" . }}
+      <!-- main content -->
+      <section id="main-content">
+
+            <div class="article-tagline">
+              <h1> {{ .Title }} </h1>
+              {{ if isset .Params "tagline" }}
+              <p>{{ .Params.tagline | safeHTML }}</p>
               {{ end }}
-              {{ block "main" . }}{{ end }}
-              {{ partial "footer.html" . }}
+            </div>
+            <div class="article-body">
+              <div class="row">
+                {{ if not .Params.notoc }}
+                  <div class="main-col col-md-10 col-sm-12">
+                {{ else }}
+                  <div class="col-sm-12">
+                {{ end }}
+                {{ block "main" . }}{{ end }}
+                {{ partial "footer-nav.html" . }}
+                  </div> <!-- column -->
+                  {{ if not .Params.notoc }}
+                    <div class="col-md-2">
+                    {{ partial "toc.html" . }}
+                    </div>
+                  {{ end }}
+              </div> <!-- row -->
+            </div> <!-- article tagline -->
+          </section> <!-- main content -->
+        </section> <!-- container -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/vendor/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script src="/js/vendor/clipboard.min.js"></script>
+        <script src="/js/theme.js"></script>
+              <!-- <script src="/js/copycode.js"></script> -->
+            </body>
+</html>

@@ -1,6 +1,6 @@
 <!-- Side nav -->
 <aside>
-  <div id="sidebar" class="nav-collapse">
+  <div id="sidebar">
 
     <ul class="sidebar-nav sidebar-menu">
       <li>
@@ -27,7 +27,7 @@
             </ul>
           </li>
           {{ else }}
-            <li class="{{if $currentNode.HasMenuCurrent "main" . }} active{{end}}">
+            <li class="{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} active{{end}}">
               <a class="" href="{{.URL}}">
                   {{ .Pre }}
                   <span>{{ .Name }}</span>
@@ -38,28 +38,3 @@
     </ul>
   </div>
 </aside>
-            <!-- <li>
-                <a href="#">
-                    <span>Item 1</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>Item 2</span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="#">
-                            <span>Sub Item 1</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Sub Item 2</span>
-                        </a>
-                    </li>
-                </ul>
-            </li> -->
-        <!-- </ul>
-    </div>
-</aside> -->

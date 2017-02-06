@@ -2,9 +2,13 @@ body {
   font-family: 'Libre Franklin', sans-serif;
 }
 
-#container {
-    width: 100%;
-    height: 100%;
+.container {
+  padding: 0;
+}
+@media (min-width: 1600px) {
+  .container {
+      width: 1570px;
+  }
 }
 
 .header {
@@ -13,7 +17,7 @@ body {
     z-index: 1002;
     height: 60px;
     padding: 0 10px;
-    background: #ffffff;
+    background: #3f3e43;
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
 .github-link {
@@ -35,11 +39,15 @@ body {
 }
 
 #sidebar {
-    width: 230px;
+    width: 200px;
     height: 100%;
-    position: fixed;
-    background: #1a2027;
+    position: absolute;
     overflow-y: auto;
+}
+
+#sidebar.floating {
+  position: fixed;
+  top: 10px;
 }
 
 ul.sidebar-nav {
@@ -52,7 +60,7 @@ ul.sidebar-nav {
 }
 
 #main-content {
-    margin-left: 230px;
+    margin-left: 200px;
     line-height: 1.8;
     font-size: 14px;
 }
@@ -103,7 +111,7 @@ ul.sidebar-menu , ul.sidebar-menu li ul.sub{
 }
 
 ul.sidebar-menu {
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 #sidebar > ul > li > ul.sub {
@@ -115,9 +123,8 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li ul.sub li{
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
+    /* Why? */
+    margin-left: -20px;
 }
 
 ul.sidebar-menu li ul.sub li:last-child{
@@ -130,29 +137,18 @@ ul.sidebar-menu li ul.sub li a {
     padding: 0 0 0 52px;
     line-height: 35px;
     height: 35px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
     font-size: 14px;
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
     font-weight: 300;
-    color: #f2f2f2;
-    /*-webkit-transition: all 0.1s ease;
-    -moz-transition: all 0.1s ease;
-    -o-transition: all 0.1s ease;
-    -ms-transition: all 0.1s ease;
-    transition: all 0.1s ease;*/
     display: block;
 }
 
 /* active page */
 ul.sidebar-menu li ul.sub li.active a {
     font-weight: 400;
-    background: #737373;
+    color: blue;
 }
 
 ul.sidebar-menu li {
@@ -169,38 +165,28 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #f2f2f2;
+    color: black;
     text-decoration: none;
     display: block;
     padding: 10px 0 10px 10px;
     font-size: 16px;
     font-weight: 200;
     outline: none;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
     white-space: nowrap;
+}
+
+ul.sidebar-menu li.active:not(.sub-menu) a{
+    font-weight: 400;
+    color: blue;
 }
 
 ul.sidebar-menu li a:focus {
     display: block;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
 }
 
 ul.sidebar-menu li a:hover {
-  background: #404040;
+  font-weight: 400;
   display: block;
-  -webkit-transition: all 0.1s ease;
-  -moz-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-  -ms-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 
 ul.sidebar-menu li a i {
@@ -319,7 +305,6 @@ pre {
 
 #TableOfContents > ul > li > ul > li {
   margin-bottom: 5px;
-  /*border-left: 2px solid transparent;*/
 }
 
 #TableOfContents a {
@@ -342,7 +327,6 @@ pre {
 	height: 2px;
 	width: 0px;
 	background: transparent;
-	/*transition: width .3s ease, background-color .5s ease;*/
   transition: all 300ms ease 0s;
 }
 #TableOfContents > ul > li > ul > li > a:hover:after,
@@ -425,21 +409,17 @@ pre .copy-to-clipboard {
     right: 0px;
     top: 0px;
     background-color: #4d5257;
-    /*background-color: #ffffff;
-    color: black;*/
     color: #ccc;
     border-radius: 2px;
     width: 80px;
     height: 30px;
-    /* vertical-align: middle; */
     text-transform: uppercase;
     letter-spacing: 1px;
-    /* align-content: center; */
     text-align: center;
     vertical-align: middle;
     padding-top: 6px;
     font-size: 14px;
-    opacity: 0.25
+    opacity: 0.25;
 }
 
 .copy-active, pre .copy-to-clipboard:hover  {
@@ -450,125 +430,6 @@ pre .copy-to-clipboard {
 .copy-to-clipboard:hover {
   cursor: pointer;
 }
-/*code + .copy-to-clipboard {
-    margin-left: -1px;
-    border-left: 0 !important;
-    font-size: inherit !important;
-    vertical-align: middle;
-    height: 21px;
-    top: 0;
-    margin-left: -1px;
-}*/
-
-/* tooltips */
-.tooltipped {
-    position: relative;
-}
-.tooltipped:after {
-    position: absolute;
-    z-index: 1000000;
-    display: none;
-    padding: 5px 8px;
-    font: normal normal 11px/1.5 "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: none;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: break-word;
-    white-space: pre;
-    pointer-events: none;
-    content: attr(aria-label);
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 3px;
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-.tooltipped:before {
-    position: absolute;
-    z-index: 1000001;
-    display: none;
-    width: 0;
-    height: 0;
-    color: rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-    content: "";
-    border: 5px solid transparent;
-}
-.tooltipped:hover:before, .tooltipped:hover:after, .tooltipped:active:before, .tooltipped:active:after, .tooltipped:focus:before, .tooltipped:focus:after {
-    display: inline-block;
-    text-decoration: none;
-}
-.tooltipped-s:after, .tooltipped-se:after, .tooltipped-sw:after {
-    top: 100%;
-    right: 50%;
-    margin-top: 5px;
-}
-.tooltipped-s:before, .tooltipped-se:before, .tooltipped-sw:before {
-    top: auto;
-    right: 50%;
-    bottom: -5px;
-    margin-right: -5px;
-    border-bottom-color: rgba(0, 0, 0, 0.8);
-}
-.tooltipped-se:after {
-    right: auto;
-    left: 50%;
-    margin-left: -15px;
-}
-.tooltipped-sw:after {
-    margin-right: -15px;
-}
-.tooltipped-n:after, .tooltipped-ne:after, .tooltipped-nw:after {
-    right: 50%;
-    bottom: 100%;
-    margin-bottom: 5px;
-}
-.tooltipped-n:before, .tooltipped-ne:before, .tooltipped-nw:before {
-    top: -5px;
-    right: 50%;
-    bottom: auto;
-    margin-right: -5px;
-    border-top-color: rgba(0, 0, 0, 0.8);
-}
-.tooltipped-ne:after {
-    right: auto;
-    left: 50%;
-    margin-left: -15px;
-}
-.tooltipped-nw:after {
-    margin-right: -15px;
-}
-.tooltipped-s:after, .tooltipped-n:after {
-    transform: translateX(50%);
-}
-.tooltipped-w:after {
-    right: 100%;
-    bottom: 50%;
-    margin-right: 5px;
-    transform: translateY(50%);
-}
-.tooltipped-w:before {
-    top: 50%;
-    bottom: 50%;
-    left: -5px;
-    margin-top: -5px;
-    border-left-color: rgba(0, 0, 0, 0.8);
-}
-.tooltipped-e:after {
-    bottom: 50%;
-    left: 100%;
-    margin-left: 5px;
-    transform: translateY(50%);
-}
-.tooltipped-e:before {
-    top: 50%;
-    right: -5px;
-    bottom: 50%;
-    margin-top: -5px;
-    border-right-color: rgba(0, 0, 0, 0.8);
-}
-/* end tooltips */
 
 /*Responsive styles*/
 @media (max-width: 768px) {
@@ -598,6 +459,7 @@ pre .copy-to-clipboard {
     .show-sidebar {
         z-index: 1003 !important;
         display: block !important;
+        background: darkgray;
     }
 
     .show-sidebar-nav {

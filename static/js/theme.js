@@ -1,5 +1,5 @@
 /*
-Namespace for docs site 
+Namespace for docs site
 */
 var DocsTheme = {
 
@@ -79,10 +79,15 @@ var DocsTheme = {
          } else {
            $('#TableOfContents').removeClass('floating');
          }
+
+         if ($(this).scrollTop() > $('#header').outerHeight()) {
+           $('#sidebar').addClass('floating');
+         } else {
+           $('#sidebar').removeClass('floating');
+         }
          // Get container scroll position
          var fromTop = $(this).scrollTop()+topMenuHeight;
 
-         // Get id of current scroll item
          var cur = scrollItems.map(function(){
            if ($(this).offset().top < fromTop)
              return this;
@@ -186,26 +191,13 @@ var DocsTheme = {
     },
 
     initCopyAnchors: function() {
-      // todo - add for sub-headers, add tooltips
-      var text, clip = new Clipboard('.anchor');
       $("h2").append(function(index, html){
         var element = $(this);
         var url = document.location.origin + document.location.pathname;
         var link = url + "#"+element[0].id;
-        return " <span class='anchor' data-clipboard-text='"+link+"'>" +
-          "<i class='fa fa-link fa-lg'></i>" +
-          "</span>"
+        return " <span class='anchor'><a href='"+link+"'>" +
+          "<i class='fa fa-link fa-lg'></i></a></span>"
         ;
-      });
-
-      $(".anchor").on('mouseleave', function(e) {
-        $(this).attr('aria-label', null).removeClass('tooltipped tooltipped-n');
-      });
-
-      clip.on('success', function(e) {
-          e.clearSelection();
-          $(e.trigger).attr('aria-label', 'Link copied to clipboard!')
-            .addClass('tooltipped tooltipped-n');
       });
     },
 
