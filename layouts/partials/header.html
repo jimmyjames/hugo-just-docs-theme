@@ -16,7 +16,7 @@
   {{ else if eq "github" .Site.Params.codeTheme }}
     <link href="{{ .Site.BaseURL }}/css/vendor/github.css" rel="stylesheet">
   {{ else }}
-    <!-- <link href="/css/vendor/monokai-sublime.css" rel="stylesheet"> -->
+    <link href="{{ .Site.BaseURL }}/css/vendor/monokai-sublime.css" rel="stylesheet">
   {{ end }}
 
   <link href="{{ .Site.BaseURL }}/css/theme.css" rel="stylesheet">
